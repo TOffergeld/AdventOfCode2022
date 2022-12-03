@@ -17,7 +17,7 @@ func TestFindMax(t *testing.T) {
 		elfs[i].Possessions = v
 	}
 	is := findMax(elfs)
-	if want != is {
-		t.Errorf("Wanted %d, got %d", want, is)
+	if want != is.Possessions {
+		t.Errorf("Wanted %d, got %d", want, is.Possessions)
 	}
 }

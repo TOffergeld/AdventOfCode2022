@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 	"strconv"
 )
 
@@ -55,18 +56,29 @@ func readInput(path string) []Elf {
 }
 
 // findMax finds the maximum of possessions of the elves
-func findMax(elfs []Elf) int {
-	max := 0
+func findMax(elfs []Elf) Elf {
+	var max Elf
 	for _, elf := range elfs {
-		if elf.Possessions > max {
-			max = elf.Possessions
+		if elf.Possessions > max.Possessions {
+			max = elf
 		}
 	}
 	return max
 
 }
 
+func sortElfs(elfs []Elf) {
+	sort.Slice(elfs, func(i, j int) bool {
+		return elfs[i].Possessions > elfs[j].Possessions
+	})
+}
+
 func Dayone() {
 	elfs := readInput("Day1/input.txt")
-	fmt.Println("Day 1 solution:", findMax(elfs))
+	sortElfs(elfs)
+	fmt.Println("Day 1 - Part 1 solution:", elfs[0].Possessions)
+	fmt.Println("Day 1 - Part 2 solution:",
+		elfs[0].Possessions+
+			elfs[1].Possessions+
+			elfs[2].Possessions)
 }
