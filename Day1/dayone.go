@@ -1,4 +1,4 @@
-package main
+package dayone
 
 import (
 	"bufio"
@@ -27,7 +27,12 @@ func readInput(path string) []Elf {
 	if err != nil {
 		panic(err)
 	}
-	defer f.Close()
+	defer func(f *os.File) {
+		err := f.Close()
+		if err != nil {
+
+		}
+	}(f)
 	position := 1
 
 	elfs := []Elf{}
@@ -61,8 +66,7 @@ func findMax(elfs []Elf) int {
 
 }
 
-func main() {
+func Dayone() {
 	elfs := readInput("Day1/input.txt")
-	fmt.Printf("%+v\n", elfs)
-	fmt.Println("Maximum:", findMax(elfs))
+	fmt.Println("Day 1 solution:", findMax(elfs))
 }
