@@ -9,5 +9,6 @@ import (
 func main() {
 	dayone.Dayone()
 	daytwo.Daytwo()
-	daythree.Daythree()
+	daythree.Daythree_p1()
+	daythree.Daythree_p2()
 }
