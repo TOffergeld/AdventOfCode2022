@@ -7,10 +7,6 @@ import (
 	"strings"
 )
 
-type Pair struct {
-	Ranges [2][2]int
-}
-
 func part1(path string) {
 	f, err := os.Open(path)
 	if err != nil {
@@ -28,11 +24,11 @@ func part1(path string) {
 	for scanner.Scan() {
 		line := scanner.Text()
 		s := strings.Split(line, ",")
-		item := Pair{Ranges: [2][2]int{
+		item := [2][2]int{
 			toInt(*(*[2]string)(strings.Split(s[0], "-"))),
-			toInt(*(*[2]string)(strings.Split(s[1], "-")))}}
-		if (item.Ranges[0][0] <= item.Ranges[1][0] && item.Ranges[0][1] >= item.Ranges[1][1]) ||
-			(item.Ranges[0][0] >= item.Ranges[1][0] && item.Ranges[0][1] <= item.Ranges[1][1]) {
+			toInt(*(*[2]string)(strings.Split(s[1], "-")))}
+		if (item[0][0] <= item[1][0] && item[0][1] >= item[1][1]) ||
+			(item[0][0] >= item[1][0] && item[0][1] <= item[1][1]) {
 			part1++
 		}
 		if overlap(item) {
@@ -43,8 +39,8 @@ func part1(path string) {
 	println("Day 4 - Part 2 solution:", part2)
 }
 
-func overlap(p Pair) bool {
-	A, B := p.Ranges[0], p.Ranges[1]
+func overlap(p [2][2]int) bool {
+	A, B := p[0], p[1]
 	if (A[0] <= B[0] && B[0] <= A[1]) ||
 		(A[0] <= B[1] && B[1] <= A[1]) ||
 		(B[0] <= A[0] && A[0] <= B[1]) ||
