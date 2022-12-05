@@ -5,6 +5,7 @@ import (
 	"bufio"
 	"os"
 	"strings"
+	"time"
 )
 
 type Game struct {
@@ -152,6 +153,8 @@ func part2() {
 }
 
 func Day2() {
+	started := time.Now()
 	part1()
 	part2()
+	println("Completed after", time.Since(started).Milliseconds())
 }

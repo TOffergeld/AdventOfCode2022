@@ -7,6 +7,7 @@ import (
 	"os"
 	"sort"
 	"strconv"
+	"time"
 )
 
 type Elf struct {
@@ -72,6 +73,7 @@ func sortElfs(elfs []Elf) {
 }
 
 func Day1() {
+	started := time.Now()
 	elfs := readInput("Day1/input.txt")
 	sortElfs(elfs)
 	fmt.Println("Day 1 - Part 1 solution:", elfs[0].Possessions)
@@ -79,4 +81,5 @@ func Day1() {
 		elfs[0].Possessions+
 			elfs[1].Possessions+
 			elfs[2].Possessions)
+	println("Completed after", time.Since(started).Milliseconds())
 }
