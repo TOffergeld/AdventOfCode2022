@@ -4,7 +4,7 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	daytwo "AdventOfCode/Day2"
+	day2 "AdventOfCode/Day2"
 	"fmt"
 
 	"github.com/spf13/cobra"
@@ -14,7 +14,7 @@ import (
 var day2Cmd = &cobra.Command{
 	Use: "day2",
 	Run: func(cmd *cobra.Command, args []string) {
-		daytwo.Daytwo()
+		day2.Day2()
 		fmt.Println("day2 called")
 	},
 }

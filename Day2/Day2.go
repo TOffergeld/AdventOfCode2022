@@ -1,6 +1,7 @@
 package daytwo
 
 import (
+	"AdventOfCode/misc"
 	"bufio"
 	"os"
 	"strings"
@@ -101,10 +102,7 @@ func (g *Game) translate_p2() {
 
 // readInput reads the input txt file for the challenge.
 func readInput(path string) []Game {
-	f, err := os.Open(path)
-	if err != nil {
-		panic(err)
-	}
+	f := misc.GetInputFile(path)
 	defer func(f *os.File) {
 		err := f.Close()
 		if err != nil {
@@ -121,11 +119,6 @@ func readInput(path string) []Game {
 		games = append(games, Game{letters[0], letters[1], 0})
 	}
 	return games
-}
-
-func Daytwo() {
-	part1()
-	part2()
 }
 
 func part1() {
@@ -156,4 +149,9 @@ func part2() {
 	}
 
 	println("Day 2 - Part 2 solution:", score)
+}
+
+func Day2() {
+	part1()
+	part2()
 }
