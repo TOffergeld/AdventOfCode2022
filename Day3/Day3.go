@@ -1,6 +1,7 @@
 package daythree
 
 import (
+	"AdventOfCode/misc"
 	"bufio"
 	"github.com/juliangruber/go-intersect"
 	"log"
@@ -38,10 +39,8 @@ func getPrioritiesMap() map[rune]int {
 
 func createRucksacks(path string) []Rucksack {
 	var rucksacks []Rucksack
-	f, err := os.Open(path)
-	if err != nil {
-		panic(err)
-	}
+	f := misc.GetInputFile(path)
+
 	defer func(f *os.File) {
 		err := f.Close()
 		if err != nil {
@@ -61,10 +60,8 @@ func createRucksacks(path string) []Rucksack {
 func createGroups(path string) []Group {
 	var groups []Group
 	var rucksackBuffer []Rucksack
-	f, err := os.Open(path)
-	if err != nil {
-		panic(err)
-	}
+	f := misc.GetInputFile(path)
+
 	defer func(f *os.File) {
 		err := f.Close()
 		if err != nil {
@@ -89,7 +86,7 @@ func createGroups(path string) []Group {
 	return groups
 }
 
-func Daythree_p1() {
+func part1() {
 	rucksacks := createRucksacks("Day3/input.txt")
 	priorities := getPrioritiesMap()
 	value := 0
@@ -104,7 +101,7 @@ func Daythree_p1() {
 	println("Day 3 - Part 1 solution:", value)
 }
 
-func Daythree_p2() {
+func part2() {
 	groups := createGroups("Day3/input.txt")
 	value := 0
 	priorities := getPrioritiesMap()
@@ -115,4 +112,9 @@ func Daythree_p2() {
 	}
 	println("Day 3 - Part 2 solution:", value)
 
+}
+
+func Day3() {
+	part1()
+	part2()
 }
