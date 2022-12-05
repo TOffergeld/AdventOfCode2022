@@ -1,6 +1,7 @@
 package day4
 
 import (
+	"AdventOfCode/misc"
 	"bufio"
 	"os"
 	"strconv"
@@ -8,10 +9,7 @@ import (
 )
 
 func part1(path string) {
-	f, err := os.Open(path)
-	if err != nil {
-		panic(err)
-	}
+	f := misc.GetInputFile(path)
 	defer func(f *os.File) {
 		err := f.Close()
 		if err != nil {
@@ -19,39 +17,59 @@ func part1(path string) {
 		}
 	}(f)
 	scanner := bufio.NewScanner(f)
-	part1 := 0
-	part2 := 0
+
+	count := 0
 	for scanner.Scan() {
 		line := scanner.Text()
 		s := strings.Split(line, ",")
 		item := [2][2]int{
-			toInt(*(*[2]string)(strings.Split(s[0], "-"))),
-			toInt(*(*[2]string)(strings.Split(s[1], "-")))}
+			stringToInt(*(*[2]string)(strings.Split(s[0], "-"))),
+			stringToInt(*(*[2]string)(strings.Split(s[1], "-")))}
 		if (item[0][0] <= item[1][0] && item[0][1] >= item[1][1]) ||
 			(item[0][0] >= item[1][0] && item[0][1] <= item[1][1]) {
-			part1++
-		}
-		if overlap(item) {
-			part2++
+			count++
 		}
 	}
-	println("Day 4 - Part 1 solution:", part1)
-	println("Day 4 - Part 2 solution:", part2)
+	println("Day 4 - Part 1 solution:", count)
 }
 
-func overlap(p [2][2]int) bool {
-	A, B := p[0], p[1]
-	if (A[0] <= B[0] && B[0] <= A[1]) ||
-		(A[0] <= B[1] && B[1] <= A[1]) ||
-		(B[0] <= A[0] && A[0] <= B[1]) ||
-		(B[0] <= A[1] && A[1] <= B[1]) {
+func part2(path string) {
+	f := misc.GetInputFile(path)
+	defer func(f *os.File) {
+		err := f.Close()
+		if err != nil {
+
+		}
+	}(f)
+	scanner := bufio.NewScanner(f)
+
+	count := 0
+	for scanner.Scan() {
+		line := scanner.Text()
+		s := strings.Split(line, ",")
+		item := [2][2]int{
+			stringToInt(*(*[2]string)(strings.Split(s[0], "-"))),
+			stringToInt(*(*[2]string)(strings.Split(s[1], "-")))}
+		if checkForOverlap(item) {
+			count++
+		}
+	}
+	println("Day 4 - Part 2 solution:", count)
+}
+
+func checkForOverlap(pair [2][2]int) bool {
+	A, B := pair[0], pair[1]
+	if (A[0] <= B[0] && B[0] <= A[1]) || // A[0] <= B[0] <= A[1]
+		(A[0] <= B[1] && B[1] <= A[1]) || // A[0] <= B[1] <= A[1]
+		(B[0] <= A[0] && A[0] <= B[1]) || // B[0] <= A[0] <= B[1]
+		(B[0] <= A[1] && A[1] <= B[1]) { // B[0] <= A[1] <= B[1]
 		return true
 	} else {
 		return false
 	}
 }
 
-func toInt(in [2]string) [2]int {
+func stringToInt(in [2]string) [2]int {
 	res := [2]int{}
 	var err error
 	res[0], err = strconv.Atoi(in[0])
@@ -67,4 +85,5 @@ func toInt(in [2]string) [2]int {
 
 func Day4() {
 	part1("Day4/input.txt")
+	part2("Day4/input.txt")
 }
