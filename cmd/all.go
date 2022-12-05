@@ -5,30 +5,36 @@ package cmd
 
 import (
 	day1 "AdventOfCode/Day1"
+	day2 "AdventOfCode/Day2"
+	day3 "AdventOfCode/Day3"
+	day4 "AdventOfCode/Day4"
 	"fmt"
 
 	"github.com/spf13/cobra"
 )
 
-// day1Cmd represents the day1 command
-var day1Cmd = &cobra.Command{
-	Use: "day1",
+// day4Cmd represents the day4 command
+var allCmd = &cobra.Command{
+	Use: "all",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("day1 called")
+		fmt.Println("all called")
 		day1.Day1()
+		day2.Day2()
+		day3.Day3()
+		day4.Day4()
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(day1Cmd)
+	rootCmd.AddCommand(allCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// day1Cmd.PersistentFlags().String("foo", "", "A help for foo")
+	// day4Cmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// day1Cmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// day4Cmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
