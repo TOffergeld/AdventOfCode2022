@@ -1,6 +1,7 @@
 package dayone
 
 import (
+	"AdventOfCode/misc"
 	"bufio"
 	"fmt"
 	"os"
@@ -24,10 +25,7 @@ func sumPossessions(possessions []int) int {
 
 // readInput reads the input txt file for the challenge.
 func readInput(path string) []Elf {
-	f, err := os.Open(path)
-	if err != nil {
-		panic(err)
-	}
+	f := misc.GetInputFile(path)
 	defer func(f *os.File) {
 		err := f.Close()
 		if err != nil {
@@ -73,7 +71,7 @@ func sortElfs(elfs []Elf) {
 	})
 }
 
-func Dayone() {
+func Day1() {
 	elfs := readInput("Day1/input.txt")
 	sortElfs(elfs)
 	fmt.Println("Day 1 - Part 1 solution:", elfs[0].Possessions)
