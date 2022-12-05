@@ -119,5 +119,5 @@ func Day3() {
 	started := time.Now()
 	part1()
 	part2()
-	println("Completed after", time.Since(started).Milliseconds())
+	println("Completed after", time.Since(started).String())
 }

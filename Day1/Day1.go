@@ -81,5 +81,5 @@ func Day1() {
 		elfs[0].Possessions+
 			elfs[1].Possessions+
 			elfs[2].Possessions)
-	println("Completed after", time.Since(started).Milliseconds())
+	println("Completed after", time.Since(started).String())
 }

@@ -88,5 +88,5 @@ func Day4() {
 	started := time.Now()
 	part1("Day4/input.txt")
 	part2("Day4/input.txt")
-	println("Completed after", time.Since(started).Milliseconds())
+	println("Completed after", time.Since(started).String())
 }
