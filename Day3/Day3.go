@@ -6,6 +6,7 @@ import (
 	"github.com/juliangruber/go-intersect"
 	"log"
 	"os"
+	"time"
 )
 
 type Group struct {
@@ -115,6 +116,8 @@ func part2() {
 }
 
 func Day3() {
+	started := time.Now()
 	part1()
 	part2()
+	println("Completed after", time.Since(started).String())
 }

@@ -6,6 +6,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func part1(path string) {
@@ -84,6 +85,8 @@ func stringToInt(in [2]string) [2]int {
 }
 
 func Day4() {
+	started := time.Now()
 	part1("Day4/input.txt")
 	part2("Day4/input.txt")
+	println("Completed after", time.Since(started).String())
 }
