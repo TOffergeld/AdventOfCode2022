@@ -51,10 +51,10 @@ func solve(path, mode string) {
 	}(f)
 	scanner := bufio.NewScanner(f)
 	stacks := buildInitialStacks(scanner)
-
+        expr := regexp.MustCompile(`move (\d*) from (\d*) to (\d*)`)
+        
 	for scanner.Scan() {
 		line := scanner.Text()
-		expr := regexp.MustCompile(`move (\d*) from (\d*) to (\d*)`)
 		res := expr.FindStringSubmatch(line)
 		count, _ := strconv.Atoi(res[1])
 		from, _ := strconv.Atoi(res[2])
