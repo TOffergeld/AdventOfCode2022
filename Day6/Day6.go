@@ -118,9 +118,8 @@ func findPacketMarker(text string) int {
 			break
 		}
 	}
-	//startidx := res-(len(q)-1)
 	marker := res + 1
-	fmt.Println(q, "starting at Index", marker)
+	fmt.Println("Day 6 - Part 1 solution:", marker)
 	return marker
 }
 
@@ -134,9 +133,8 @@ func findMessageMarker(text string) int {
 			break
 		}
 	}
-	//startidx := res-(len(q)-1)
 	marker := res + 1
-	fmt.Println(q, "starting at Index", marker)
+	fmt.Println("Day 6 - Part 2 solution:", marker)
 	return marker
 }
 

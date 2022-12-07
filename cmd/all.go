@@ -9,6 +9,7 @@ import (
 	day3 "AdventOfCode/Day3"
 	day4 "AdventOfCode/Day4"
 	day5 "AdventOfCode/Day5"
+	day6 "AdventOfCode/Day6"
 	"fmt"
 
 	"github.com/spf13/cobra"
@@ -24,6 +25,7 @@ var allCmd = &cobra.Command{
 		day3.Day3()
 		day4.Day4()
 		day5.Day5()
+		day6.Day6()
 	},
 }
 
