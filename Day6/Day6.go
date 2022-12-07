@@ -1,4 +1,4 @@
-package main
+package day6
 
 import (
 	"AdventOfCode/misc"
@@ -140,9 +140,10 @@ func findMessageMarker(text string) int {
 	return marker
 }
 
-func main() {
+func Day6() {
 	started := time.Now()
-	findPacketMarker(readInput("input.txt"))
-	findMessageMarker(readInput("input.txt"))
+	text := readInput("Day6/input.txt")
+	findPacketMarker(text)
+	findMessageMarker(text)
 	println("Completed after", time.Since(started).String())
 }
