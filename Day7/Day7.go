@@ -2,9 +2,7 @@ package Day7
 
 import (
 	"AdventOfCode/misc"
-	"bufio"
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -90,22 +88,6 @@ func buildTree(text []string) *Directory {
 	return root
 }
 
-func readInput(path string) []string {
-	f := misc.GetInputFile(path)
-	defer func(f *os.File) {
-		err := f.Close()
-		if err != nil {
-
-		}
-	}(f)
-	scanner := bufio.NewScanner(f)
-	var rows []string
-	for scanner.Scan() {
-		rows = append(rows, scanner.Text())
-	}
-	return rows
-}
-
 func solve(text []string) {
 	root := buildTree(text)
 	root.getSize()
@@ -137,7 +119,7 @@ func solve(text []string) {
 
 func Day7() {
 	started := time.Now()
-	text := readInput("Day7/input.txt")
+	text := misc.ReadInputRows("Day7/input.txt")
 	solve(text)
 
 	println("Completed after", time.Since(started).String())
