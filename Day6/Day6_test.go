@@ -1,10 +1,10 @@
-package day6
+package Day6
 
 import "testing"
 
 func TestSumPossessions(t *testing.T) {
 	want := 5
-	is := findPacketMarker("bvwbjplbgvbhsrlpgdmjqwftvncz")
+	is := findMarker("bvwbjplbgvbhsrlpgdmjqwftvncz", 4)
 	if want != is {
 		t.Errorf("Wanted %d, got %d", want, is)
 	}
@@ -12,7 +12,7 @@ func TestSumPossessions(t *testing.T) {
 
 func TestSumPossessions2(t *testing.T) {
 	want := 10
-	is := findPacketMarker("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg")
+	is := findMarker("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 4)
 	if want != is {
 		t.Errorf("Wanted %d, got %d", want, is)
 	}
