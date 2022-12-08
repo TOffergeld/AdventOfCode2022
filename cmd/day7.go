@@ -4,35 +4,23 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	day1 "AdventOfCode/Day1"
-	day2 "AdventOfCode/Day2"
-	day3 "AdventOfCode/Day3"
-	day4 "AdventOfCode/Day4"
-	day5 "AdventOfCode/Day5"
-	day6 "AdventOfCode/Day6"
-	"AdventOfCode/Day7"
+	day7 "AdventOfCode/Day7"
 	"fmt"
 
 	"github.com/spf13/cobra"
 )
 
-// day4Cmd represents the day4 command
-var allCmd = &cobra.Command{
-	Use: "all",
+// day7Cmd represents the day5 command
+var day7Cmd = &cobra.Command{
+	Use: "day7",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("all called")
-		day1.Day1()
-		day2.Day2()
-		day3.Day3()
-		day4.Day4()
-		day5.Day5()
-		day6.Day6()
-		Day7.Day7()
+		fmt.Println("day7 called")
+		day7.Day7()
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(allCmd)
+	rootCmd.AddCommand(day7Cmd)
 
 	// Here you will define your flags and configuration settings.
 
