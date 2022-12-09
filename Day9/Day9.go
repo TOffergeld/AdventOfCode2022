@@ -31,10 +31,10 @@ func pInR(p image.Point, r image.Rectangle) bool {
 }
 
 var directions = map[string]image.Point{
-	"R": image.Point{1, 0},
-	"D": image.Point{0, -1},
-	"L": image.Point{-1, 0},
-	"U": image.Point{0, 1},
+	"R": {1, 0},
+	"D": {0, -1},
+	"L": {-1, 0},
+	"U": {0, 1},
 }
 
 func Day9() {
