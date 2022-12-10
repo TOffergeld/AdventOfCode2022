@@ -5,6 +5,7 @@ package cmd
 
 import (
 	day1 "AdventOfCode/Day1"
+	"AdventOfCode/Day10"
 	day2 "AdventOfCode/Day2"
 	day3 "AdventOfCode/Day3"
 	day4 "AdventOfCode/Day4"
@@ -32,6 +33,7 @@ var allCmd = &cobra.Command{
 		Day7.Day7()
 		Day8.Day8()
 		Day9.Day9()
+		Day10.Day10()
 	},
 }
 
