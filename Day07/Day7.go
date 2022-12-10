@@ -1,4 +1,4 @@
-package Day7
+package Day07
 
 import (
 	"AdventOfCode/misc"
@@ -119,7 +119,7 @@ func solve(text []string) {
 
 func Day7() {
 	started := time.Now()
-	text := misc.ReadInputRows("Day7/input.txt")
+	text := misc.ReadInputRows("Day07/input.txt")
 	solve(text)
 
 	println("Completed after", time.Since(started).String())

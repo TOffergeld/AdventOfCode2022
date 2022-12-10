@@ -1,4 +1,4 @@
-package day4
+package Day04
 
 import (
 	"AdventOfCode/misc"
@@ -86,7 +86,7 @@ func stringToInt(in [2]string) [2]int {
 
 func Day4() {
 	started := time.Now()
-	part1("Day4/input.txt")
-	part2("Day4/input.txt")
+	part1("Day04/input.txt")
+	part2("Day04/input.txt")
 	println("Completed after", time.Since(started).String())
 }

@@ -1,4 +1,4 @@
-package Day6
+package Day06
 
 import (
 	"AdventOfCode/misc"
@@ -81,7 +81,7 @@ func findMarker(text string, length int) int {
 
 func Day6() {
 	started := time.Now()
-	text := readInput("Day6/input.txt")
+	text := readInput("Day06/input.txt")
 	findMarker(text, 4)
 	findMarker(text, 14)
 	println("Completed after", time.Since(started).String())

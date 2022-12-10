@@ -4,7 +4,7 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	day2 "AdventOfCode/Day2"
+	day2 "AdventOfCode/Day02"
 	"fmt"
 
 	"github.com/spf13/cobra"
