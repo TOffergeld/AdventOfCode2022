@@ -1,4 +1,4 @@
-package day5
+package Day05
 
 import (
 	"AdventOfCode/misc"
@@ -51,8 +51,8 @@ func solve(path, mode string) {
 	}(f)
 	scanner := bufio.NewScanner(f)
 	stacks := buildInitialStacks(scanner)
-        expr := regexp.MustCompile(`move (\d*) from (\d*) to (\d*)`)
-        
+	expr := regexp.MustCompile(`move (\d*) from (\d*) to (\d*)`)
+
 	for scanner.Scan() {
 		line := scanner.Text()
 		res := expr.FindStringSubmatch(line)
@@ -123,7 +123,7 @@ func buildInitialStacks(scanner *bufio.Scanner) []Stack {
 
 func Day5() {
 	started := time.Now()
-	solve("Day5/input.txt", "9000")
-	solve("Day5/input.txt", "9001")
+	solve("Day05/input.txt", "9000")
+	solve("Day05/input.txt", "9001")
 	println("Completed after", time.Since(started).String())
 }

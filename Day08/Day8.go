@@ -1,4 +1,4 @@
-package Day8
+package Day08
 
 import (
 	"AdventOfCode/misc"
@@ -37,7 +37,7 @@ func printForest(arr [][]Tree) {
 func Day8() {
 	started := time.Now()
 
-	rows := misc.ReadInputRows("Day8/input.txt")
+	rows := misc.ReadInputRows("Day08/input.txt")
 	width := len(rows[0])
 	height := len(rows)
 	arr := make([][]Tree, height)

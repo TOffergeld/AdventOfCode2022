@@ -1,4 +1,4 @@
-package Day9
+package Day09
 
 import (
 	"AdventOfCode/misc"
@@ -92,7 +92,7 @@ func visitedNodes(txt []string, rope []image.Point) map[image.Point]bool {
 
 func Day9() {
 	started := time.Now()
-	txt := misc.ReadInputRows("Day9/input.txt")
+	txt := misc.ReadInputRows("Day09/input.txt")
 
 	shortRope := make([]image.Point, 2)
 	longRope := make([]image.Point, 10)

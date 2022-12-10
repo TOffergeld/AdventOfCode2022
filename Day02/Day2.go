@@ -1,4 +1,4 @@
-package daytwo
+package Day02
 
 import (
 	"AdventOfCode/misc"
@@ -123,7 +123,7 @@ func readInput(path string) []Game {
 }
 
 func part1() {
-	games := readInput("Day2/input.txt")
+	games := readInput("Day02/input.txt")
 	for idx := range games {
 		go games[idx].translate_p1()
 	}
@@ -138,7 +138,7 @@ func part1() {
 }
 
 func part2() {
-	games := readInput("Day2/input.txt")
+	games := readInput("Day02/input.txt")
 	for idx := range games {
 		go games[idx].translate_p2()
 	}

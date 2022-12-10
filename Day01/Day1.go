@@ -1,4 +1,4 @@
-package dayone
+package Day01
 
 import (
 	"AdventOfCode/misc"
@@ -74,7 +74,7 @@ func sortElfs(elfs []Elf) {
 
 func Day1() {
 	started := time.Now()
-	elfs := readInput("Day1/input.txt")
+	elfs := readInput("Day01/input.txt")
 	sortElfs(elfs)
 	fmt.Println("Day 1 - Part 1 solution:", elfs[0].Possessions)
 	fmt.Println("Day 1 - Part 2 solution:",

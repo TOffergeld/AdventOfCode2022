@@ -1,4 +1,4 @@
-package daythree
+package Day03
 
 import (
 	"AdventOfCode/misc"
@@ -88,7 +88,7 @@ func createGroups(path string) []Group {
 }
 
 func part1() {
-	rucksacks := createRucksacks("Day3/input.txt")
+	rucksacks := createRucksacks("Day03/input.txt")
 	priorities := getPrioritiesMap()
 	value := 0
 	for rs := range rucksacks {
@@ -103,7 +103,7 @@ func part1() {
 }
 
 func part2() {
-	groups := createGroups("Day3/input.txt")
+	groups := createGroups("Day03/input.txt")
 	value := 0
 	priorities := getPrioritiesMap()
 	c := make(chan rune)
