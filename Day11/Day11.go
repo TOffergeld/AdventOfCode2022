@@ -2,6 +2,7 @@ package Day11
 
 import (
 	"fmt"
+	"math"
 )
 
 type Monkey struct {
@@ -10,6 +11,11 @@ type Monkey struct {
 	test      func(int) bool
 	tar       map[bool]int
 	inspected int
+}
+
+func postProcess(val, div int) int {
+	r := val / div
+	return int(math.Round(float64(r) - .5)) // "round down to nearest integer"
 }
 
 func Day11() {
@@ -71,45 +77,15 @@ func Day11() {
 			0,
 		},
 	}
-	testmonkeys := []Monkey{
-		{
-			[]int{79, 98},
-			func(old int) int { return old * 19 },
-			func(val int) bool { return (val % 23) == 0 },
-			map[bool]int{true: 2, false: 3},
-			0,
-		},
-		{
-			[]int{54, 65, 75, 74},
-			func(old int) int { return old + 6 },
-			func(val int) bool { return (val % 19) == 0 },
-			map[bool]int{true: 2, false: 0},
-			0,
-		},
-		{
-			[]int{79, 60, 97},
-			func(old int) int { return old * old },
-			func(val int) bool { return (val % 13) == 0 },
-			map[bool]int{true: 1, false: 3},
-			0,
-		},
-		{
-			[]int{74},
-			func(old int) int { return old + 3 },
-			func(val int) bool { return (val % 17) == 0 },
-			map[bool]int{true: 0, false: 1},
-			0,
-		},
-	}
 	var subjects []Monkey
 	subjects = monkeys
-	subjects = testmonkeys
-	subjects = monkeys
-	prodMod := 13 * 19 * 5 * 2 * 17 * 11 * 7 * 3
+	prodMod := 13 * 19 * 5 * 2 * 17 * 11 * 7 * 3 //hardcoded divisor to keep modulo
 	for iteration := 0; iteration < 10000; iteration++ {
 		for m_idx, m := range subjects {
 			for _, item := range m.items {
 				newValue := m.op(item)
+				newValue = postProcess(newValue, 1)
+
 				sub_idx := m.tar[m.test(newValue)]
 				newValue = newValue % prodMod
 				subjects[sub_idx].items = append(subjects[sub_idx].items, newValue)
