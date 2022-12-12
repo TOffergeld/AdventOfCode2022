@@ -3,6 +3,7 @@ package Day11
 import (
 	"fmt"
 	"math"
+	"sort"
 )
 
 type Monkey struct {
@@ -95,7 +96,12 @@ func Day11() {
 			subjects[m_idx].items = []int{}
 		}
 	}
+	activities := []int{}
 	for i, m := range subjects {
 		fmt.Println("Activity of monkey", i, "is", m.inspected)
+		activities = append(activities, m.inspected)
 	}
+
+	sort.Slice(activities, func(i, j int) bool { return activities[i] > activities[j] })
+	fmt.Println(activities[0] * activities[1])
 }
