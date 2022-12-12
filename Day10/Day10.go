@@ -67,8 +67,8 @@ func Day10() {
 		totals += idx * signal[idx-1]
 	}
 
-	fmt.Println("Day 9 - Part 1 solution:", totals)
-	fmt.Println("Day 9 - Part 1 solution:")
+	fmt.Println("Day 10 - Part 1 solution:", totals)
+	fmt.Println("Day 10 - Part 2 solution:")
 
 	printSignal(signal)
 

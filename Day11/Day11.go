@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"sort"
+	"time"
 )
 
 type Monkey struct {
@@ -20,7 +21,24 @@ func postProcess(val, div int) int {
 }
 
 func Day11() {
-	monkeys := []Monkey{
+	started := time.Now()
+	prodMod := 13 * 19 * 5 * 2 * 17 * 11 * 7 * 3 //hardcoded divisor to keep modulo. These are simply the modulo divisors used by each monkey, multiplied
+
+	subjects := getMonkeys()
+	part1 := solve(subjects, prodMod, 20, 3)
+	fmt.Println("Day 11 - Part 1 solution:", part1)
+	println("Completed after", time.Since(started).String())
+
+	subjects = getMonkeys()
+
+	part2 := solve(subjects, prodMod, 10000, 1)
+	fmt.Println("Day 11 - Part 2 solution:", part2)
+	println("Completed after", time.Since(started).String())
+
+}
+
+func getMonkeys() []Monkey {
+	subjects := []Monkey{
 		{
 			[]int{64},
 			func(old int) int { return old * 7 },
@@ -78,14 +96,15 @@ func Day11() {
 			0,
 		},
 	}
-	var subjects []Monkey
-	subjects = monkeys
-	prodMod := 13 * 19 * 5 * 2 * 17 * 11 * 7 * 3 //hardcoded divisor to keep modulo
-	for iteration := 0; iteration < 10000; iteration++ {
+	return subjects
+}
+
+func solve(subjects []Monkey, prodMod, iterations, divisor int) int {
+	for iteration := 0; iteration < iterations; iteration++ {
 		for m_idx, m := range subjects {
 			for _, item := range m.items {
 				newValue := m.op(item)
-				newValue = postProcess(newValue, 1)
+				newValue = postProcess(newValue, divisor)
 
 				sub_idx := m.tar[m.test(newValue)]
 				newValue = newValue % prodMod
@@ -97,11 +116,11 @@ func Day11() {
 		}
 	}
 	activities := []int{}
-	for i, m := range subjects {
-		fmt.Println("Activity of monkey", i, "is", m.inspected)
+	for _, m := range subjects {
+		//fmt.Println("Activity of monkey", i, "is", m.inspected)
 		activities = append(activities, m.inspected)
 	}
 
 	sort.Slice(activities, func(i, j int) bool { return activities[i] > activities[j] })
-	fmt.Println(activities[0] * activities[1])
+	return activities[0] * activities[1]
 }

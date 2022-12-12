@@ -10,9 +10,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// Day11Cmd represents the Day11 command
-var Day11Cmd = &cobra.Command{
-	Use: "Day11",
+// day11Cmd represents the Day11 command
+var day11Cmd = &cobra.Command{
+	Use: "day11",
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("Day11 called")
 		Day11.Day11()
@@ -20,7 +20,7 @@ var Day11Cmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(Day11Cmd)
+	rootCmd.AddCommand(day11Cmd)
 
 	// Here you will define your flags and configuration settings.
 
