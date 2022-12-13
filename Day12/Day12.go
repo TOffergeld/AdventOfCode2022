@@ -17,18 +17,24 @@ func bfs(p image.Point, s chan image.Point, grid map[image.Point]rune) {
 }
 
 func testMove(src, dst image.Point, grid map[image.Point]rune) bool {
-	var src_val rune
+	var src_val, dst_val rune
 	if grid[src] == 'S' {
 		src_val = 'a'
+		dst_val = grid[dst]
+	} else if grid[dst]=='E' {
+		src_val = grid[src]
+		dst_val = 'z'
 	} else {
 		src_val = grid[src]
+		dst_val = grid[dst]
 	}
-	return grid[dst]-src_val <= 1
+	return dst_val-src_val <= 1
 }
 
 func Day12() {
 	txt := misc.ReadInputRows("input.txt")
 	grid := map[image.Point]rune{}
+	visited := map[image.Point]bool{}
 	var start image.Point
 	for r, line := range txt {
 		for c, val := range line {
@@ -41,13 +47,18 @@ func Day12() {
 	q := []image.Point{}
 	q = append(q, start)
 	s := make(chan image.Point)
-	for i := 0; i < 1000; i++ {
+	var i int
+	for i = 0; i < 1000; i++ {
 		elements := len(q)
 		for i := 0; i < elements; i++ {
 			if grid[q[i]] == 'E' {
 				break
 			}
-			go bfs(q[i], s, grid)
+			if !visited[q[i]] {
+				go bfs(q[i], s, grid)
+				visited[q[i]] = true
+			}
+
 		}
 		q = []image.Point{}
 		for i := 0; i < elements; i++ {
@@ -55,6 +66,7 @@ func Day12() {
 		}
 	}
 	fmt.Println(start)
+	fmt.Println(i)
 	// ToDo: Set end to 'z'
 	// ToDo: Don't move into already visited segments
 }
